@@ -161,26 +161,7 @@ Production/
 - Uses the same `run_simulation` backend as CLI for consistency.
 - Non-video observables are image-backed from run outputs (final-only refresh policy).
 
-## 4) Efficiency Improvements vs. Prior Code
-
-The production implementation is optimized in several key ways:
-
-1. **Neighbor shells precomputed once**:
-- No repeated shell reconstruction from DataFrames every KMC step.
-
-2. **Descriptor encoding is array-based**:
-- Avoids repeated pandas one-hot operations in the hot loop.
-
-3. **Persistent ANN cache**:
-- Repeated local environments are served from cache instead of re-running inference.
-
-4. **Array-based state updates**:
-- Vacancy swaps and event-rate logic run on numpy arrays, reducing overhead.
-
-5. **Single backend for GUI and CLI**:
-- Removes duplicated simulation codepaths and drift.
-
-## 5) Installation
+## 4) Installation
 
 From repository root:
 
@@ -192,7 +173,7 @@ Notes:
 - `run_gui.py` now configures local writable matplotlib/font caches under `Production/.cache` to avoid cache-permission issues.
 - If you previously installed dependencies with `pyparsing>=3.3`, reinstall from `requirements.txt` before running GUI on Python 3.14.
 
-## 6) Running
+## 5) Running
 
 ### GUI
 
@@ -250,7 +231,7 @@ python3 Production/scripts/run_sweep.py \
   --out_root Production/runs/sweep
 ```
 
-## 7) Outputs
+## 6) Outputs
 
 Each run directory contains:
 - `run_config.json`: normalized full configuration.
@@ -271,7 +252,7 @@ Each run directory contains:
 - `summary.json`: final summary, including diffusion estimate.
 - PNG plots for standard observables.
 
-## 8) Metadata Format Expectations
+## 7) Metadata Format Expectations
 
 Metadata (`.json`) should contain at least:
 - `input_dim`
@@ -283,7 +264,7 @@ Metadata (`.json`) should contain at least:
 
 `example_model.meta.json` is included for the Example checkpoint.
 
-## 9) Detailed-Balance Surrogate (Optional)
+## 8) Detailed-Balance Surrogate (Optional)
 
 If enabled, the engine applies a local barrier adjustment using a user-provided 3x3 interaction matrix (eV):
 - estimate local energy difference for moving species between hop site and vacancy site,
@@ -291,15 +272,7 @@ If enabled, the engine applies a local barrier adjustment using a user-provided 
 
 This is an optional surrogate for consistency checks and sensitivity studies.
 
-## 10) Tests
-
-Run:
-
-```bash
-PYTHONPATH=Production python3 -m unittest discover Production/tests
-```
-
-## 11) Notes
+## 9) Notes
 
 - ANN inference requires PyTorch.
 - GUI requires PyQt5.
