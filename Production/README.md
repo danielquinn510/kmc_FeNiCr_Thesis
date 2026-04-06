@@ -2,12 +2,6 @@
 
 Production-grade ANN-driven Kinetic Monte Carlo (KMC) simulator and GUI for vacancy diffusion in fcc Fe-Ni-Cr.
 
-This folder is a full implementation aligned with the project description requirements and user stories, with a focus on:
-- Descriptor parity with ANN training schema.
-- Efficient KMC execution via one-time neighbor-shell precomputation.
-- Persistent ANN inference caching.
-- Reproducible outputs and observables suitable for analysis against Nature Communications (2024) 15:3879 analog trends.
-
 ## 1) What This Delivers
 
 ### User story coverage
