@@ -95,11 +95,7 @@ Production/
     run_cli.py
     run_gui.py
     run_sweep.py
-  tests/
-    test_descriptor.py
-    test_structure.py
-    test_observables.py
-    test_lammps_io.py
+
 ```
 
 ## 3) Core Architecture
