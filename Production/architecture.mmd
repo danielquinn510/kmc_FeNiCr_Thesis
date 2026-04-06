@@ -1,0 +1,35 @@
+```mermaid
+flowchart LR
+  subgraph EP["Entry Points"]
+    GUI_SCRIPT["run_gui.py"]
+    CLI_SCRIPT["run_cli.py / run_sweep.py"]
+  end
+
+  subgraph FE["Frontend (PyQt5)"]
+    UI["GUI App<br/>(controls, logs, observable viewer)"]
+  end
+
+  subgraph BE["Backend (Python)"]
+    ORCH["Simulation Orchestrator<br/>run_simulation()"]
+    KMC["KMC + ANN Core<br/>(descriptor, predictor, engine)"]
+    ANALYTICS["Observables + Rendering<br/>(metrics, plots, media)"]
+  end
+
+  subgraph DATA["Data Layer (File-based)"]
+    INPUTS[("Input Assets<br/>LAMMPS .data, model checkpoint, metadata")]
+    OUTPUTS[("Run Artifacts<br/>JSON, CSV, NPZ, PNG, GIF/MP4")]
+  end
+
+  GUI_SCRIPT -->|"launches"| UI
+  UI -->|"run config + actions"| ORCH
+  CLI_SCRIPT -->|"CLI/sweep params"| ORCH
+
+  INPUTS -->|"load structures + model assets"| ORCH
+  ORCH -->|"step requests + state"| KMC
+  KMC -->|"rates/events/state updates"| ORCH
+  ORCH -->|"time logs + trajectories"| ANALYTICS
+  ANALYTICS -->|"write observable artifacts"| OUTPUTS
+
+  UI -->|"read plots/videos"| OUTPUTS
+
+```

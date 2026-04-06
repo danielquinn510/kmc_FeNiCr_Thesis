@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Runtime/generated
+Production/.cache/
+Production/runs/
+Production/tests/
