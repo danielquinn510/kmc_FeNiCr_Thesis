@@ -1,6 +1,6 @@
 #  KMC-ANN
 
--grade ANN-driven Kinetic Monte Carlo (KMC) simulator and GUI for vacancy diffusion in fcc Fe-Ni-Cr.
+ANN-driven Kinetic Monte Carlo (KMC) simulator and GUI for vacancy diffusion in fcc Fe-Ni-Cr.
 
 ## 1) What This Delivers
 
