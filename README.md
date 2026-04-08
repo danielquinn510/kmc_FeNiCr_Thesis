@@ -1,6 +1,6 @@
-# Production KMC-ANN
+#  KMC-ANN
 
-Production-grade ANN-driven Kinetic Monte Carlo (KMC) simulator and GUI for vacancy diffusion in fcc Fe-Ni-Cr.
+-grade ANN-driven Kinetic Monte Carlo (KMC) simulator and GUI for vacancy diffusion in fcc Fe-Ni-Cr.
 
 ## 1) What This Delivers
 
@@ -56,7 +56,7 @@ This implementation targets the observables described in the project document:
 ## 2) Directory Layout
 
 ```text
-Production/
+/
   README.md
   requirements.txt
   data/
@@ -69,7 +69,7 @@ Production/
     legacy/
       mlp_best.pt
       mlp_best.meta.json
-  production_kmc/
+  _kmc/
     __init__.py
     constants.py
     config.py
@@ -160,11 +160,11 @@ Production/
 From repository root:
 
 ```bash
-python3 -m pip install -r Production/requirements.txt
+python3 -m pip install -r /requirements.txt
 ```
 
 Notes:
-- `run_gui.py` now configures local writable matplotlib/font caches under `Production/.cache` to avoid cache-permission issues.
+- `run_gui.py` now configures local writable matplotlib/font caches under `/.cache` to avoid cache-permission issues.
 - If you previously installed dependencies with `pyparsing>=3.3`, reinstall from `requirements.txt` before running GUI on Python 3.14.
 
 ## 5) Running
@@ -172,7 +172,7 @@ Notes:
 ### GUI
 
 ```bash
-python3 Production/scripts/run_gui.py
+python3 /scripts/run_gui.py
 ```
 
 ### CLI
@@ -180,49 +180,49 @@ python3 Production/scripts/run_gui.py
 Example using file input:
 
 ```bash
-python3 Production/scripts/run_cli.py \
+python3 /scripts/run_cli.py \
   --mode file \
-  --data Production/data/df_atoms_fcc_FeNiCr.data \
-  --ckpt Production/models/example/best_model_10TypeFeatures_best.pth \
-  --meta Production/models/example/example_model.meta.json \
+  --data /data/df_atoms_fcc_FeNiCr.data \
+  --ckpt /models/example/best_model_10TypeFeatures_best.pth \
+  --meta /models/example/example_model.meta.json \
   --T 1000 \
   --nu_log10 13 \
   --steps 2000 \
   --save_every 25 \
   --video_max_frames 300 \
   --video_fps 12 \
-  --out_dir Production/runs/cli_run
+  --out_dir /runs/cli_run
 ```
 
 Example using generated structure:
 
 ```bash
-python3 Production/scripts/run_cli.py \
+python3 /scripts/run_cli.py \
   --mode generated \
   --num_atoms 500 \
   --fe_pct 33.34 --ni_pct 33.33 --cr_pct 33.33 \
   --vacancy_atom_id -1 \
   --steps 1000 \
-  --out_dir Production/runs/generated_run
+  --out_dir /runs/generated_run
 ```
 
 Disable media observables for a run:
 
 ```bash
-python3 Production/scripts/run_cli.py --no_frame_videos --out_dir Production/runs/no_media_run
+python3 /scripts/run_cli.py --no_frame_videos --out_dir /runs/no_media_run
 ```
 
 ### Temperature Sweep
 
 ```bash
-python3 Production/scripts/run_sweep.py \
+python3 /scripts/run_sweep.py \
   --mode file \
-  --data Production/data/df_atoms_fcc_FeNiCr.data \
+  --data /data/df_atoms_fcc_FeNiCr.data \
   --Tmin 600 --Tmax 1400 --Tstep 200 \
   --nu_log10 13 \
   --steps 2000 \
   --frame_videos \
-  --out_root Production/runs/sweep
+  --out_root /runs/sweep
 ```
 
 ## 6) Outputs
